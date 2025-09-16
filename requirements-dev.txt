@@ -1,0 +1,13 @@
+# Testing
+pytest
+pytest-cov
+
+# Linting / Formatting
+flake8
+black
+
+# Type checking (optional)
+mypy
+
+# Security checks (optional)
+bandit
