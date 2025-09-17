@@ -1,2 +1,24 @@
+# Core framework
 flask
-flask-mysqldb
+flask_sqlalchemy
+
+# Template engine
+jinja2
+werkzeug
+itsdangerous
+click
+blinker
+
+# --------------------------
+# Database Drivers (Optional)
+# --------------------------
+
+# MySQL (only if you want MySQL DB)
+flask-mysqldb ; extra == "mysql"
+mysqlclient ; extra == "mysql"
+
+# PostgreSQL (only if you want PostgreSQL DB)
+psycopg2-binary ; extra == "postgres"
+
+# SQLite → built-in (no extra install needed)
+
