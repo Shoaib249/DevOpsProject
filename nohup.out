@@ -1,0 +1,216 @@
+[2025-09-17 05:53:45 +0000] [13329] [INFO] Starting gunicorn 21.2.0
+[2025-09-17 05:53:45 +0000] [13329] [INFO] Listening at: http://127.0.0.1:8000 (13329)
+[2025-09-17 05:53:45 +0000] [13329] [INFO] Using worker: sync
+[2025-09-17 05:53:45 +0000] [13348] [INFO] Booting worker with pid: 13348
+[2025-09-17 05:53:45 +0000] [13353] [INFO] Booting worker with pid: 13353
+[2025-09-17 05:53:45 +0000] [13354] [INFO] Booting worker with pid: 13354
+[2025-09-17 05:56:47,055] ERROR in app: Exception on /signup [POST]
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/app.py", line 31, in signup
+    cursor = mysql.connection.cursor()
+             ^^^^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/flask_mysqldb/__init__.py", line 109, in connection
+    ctx.mysql_db = self.connect
+                   ^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/flask_mysqldb/__init__.py", line 97, in connect
+    return MySQLdb.connect(**kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/MySQLdb/__init__.py", line 121, in Connect
+    return Connection(*args, **kwargs)
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/MySQLdb/connections.py", line 200, in __init__
+    super().__init__(*args, **kwargs2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+MySQLdb.OperationalError: (2002, "Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)")
+[2025-09-17 05:59:33 +0000] [13348] [INFO] Worker exiting (pid: 13348)
+[2025-09-17 05:59:33 +0000] [13329] [INFO] Handling signal: term
+[2025-09-17 05:59:33 +0000] [13353] [INFO] Worker exiting (pid: 13353)
+[2025-09-17 05:59:33 +0000] [13354] [INFO] Worker exiting (pid: 13354)
+[2025-09-17 05:59:34 +0000] [13329] [INFO] Shutting down: Master
+[2025-09-17 05:59:34 +0000] [14414] [INFO] Starting gunicorn 21.2.0
+[2025-09-17 05:59:34 +0000] [14414] [INFO] Listening at: http://127.0.0.1:8000 (14414)
+[2025-09-17 05:59:34 +0000] [14414] [INFO] Using worker: sync
+[2025-09-17 05:59:34 +0000] [14430] [INFO] Booting worker with pid: 14430
+[2025-09-17 05:59:34 +0000] [14430] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named '/home/UbuntuMachine/DevOpsProject/app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/util.py", line 375, in import_app
+    raise ImportError(msg % (module.rsplit(".", 1)[0], obj))
+ImportError: Failed to find application, did you mean '/home/UbuntuMachine/DevOpsProject/app:application'?
+[2025-09-17 05:59:34 +0000] [14430] [INFO] Worker exiting (pid: 14430)
+[2025-09-17 05:59:34 +0000] [14433] [INFO] Booting worker with pid: 14433
+[2025-09-17 05:59:34 +0000] [14433] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named '/home/UbuntuMachine/DevOpsProject/app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/util.py", line 375, in import_app
+    raise ImportError(msg % (module.rsplit(".", 1)[0], obj))
+ImportError: Failed to find application, did you mean '/home/UbuntuMachine/DevOpsProject/app:application'?
+[2025-09-17 05:59:34 +0000] [14433] [INFO] Worker exiting (pid: 14433)
+[2025-09-17 05:59:34 +0000] [14440] [INFO] Booting worker with pid: 14440
+[2025-09-17 05:59:34 +0000] [14414] [ERROR] Worker (pid:14430) exited with code 3
+[2025-09-17 05:59:34 +0000] [14414] [ERROR] Worker (pid:14433) was sent SIGTERM!
+[2025-09-17 05:59:34 +0000] [14440] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named '/home/UbuntuMachine/DevOpsProject/app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/util.py", line 375, in import_app
+    raise ImportError(msg % (module.rsplit(".", 1)[0], obj))
+ImportError: Failed to find application, did you mean '/home/UbuntuMachine/DevOpsProject/app:application'?
+[2025-09-17 05:59:34 +0000] [14440] [INFO] Worker exiting (pid: 14440)
+[2025-09-17 05:59:34 +0000] [14414] [ERROR] Worker (pid:14440) exited with code 3
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 202, in run
+    self.manage_workers()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 571, in manage_workers
+    self.spawn_workers()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 643, in spawn_workers
+    time.sleep(0.1 * random.random())
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 530, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/UbuntuMachine/DevOpsProject/venv/bin/gunicorn", line 7, in <module>
+    sys.exit(run())
+             ~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 236, in run
+    super().run()
+    ~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 229, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 342, in halt
+    self.stop()
+    ~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 396, in stop
+    time.sleep(0.1)
+    ~~~~~~~~~~^^^^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+    self.reap_workers()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/home/UbuntuMachine/DevOpsProject/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 530, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
